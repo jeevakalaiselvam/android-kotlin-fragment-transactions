@@ -61,34 +61,41 @@ class MainActivity : AppCompatActivity() {
             val bundle = Bundle()
             bundle.putString("name", "First Fragment")
             bundle.putInt("count", supportFragmentManager.backStackEntryCount)
+            val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.fragment_container_view, FirstFragment::class.java, bundle)
-                .addToBackStack(Random.nextInt(0,1000).toString())
+                .addToBackStack(fragmentID)
                 .commit()
+
         }
 
+        //Add a new Fragment to the Back Stack and log the count
         binding.first.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("name", "First Fragment")
             bundle.putInt("count", supportFragmentManager.backStackEntryCount)
+            val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle)
-                .addToBackStack(Random.nextInt(0,1000).toString())
+                .addToBackStack(fragmentID)
                 .commit()
 
         }
 
+        //Add a new Fragment to the Back Stack and log the count
         binding.second.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("name", "Second Fragment")
             bundle.putInt("count", supportFragmentManager.backStackEntryCount)
+            val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle)
-                .addToBackStack(Random.nextInt(0,1000).toString())
+                .addToBackStack(fragmentID)
                 .commit()
+
         }
 
 
@@ -118,6 +125,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
     }
+
 
 
 
