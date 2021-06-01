@@ -14,13 +14,13 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlin.random.Random
 
 
-const val DATA_INTENT_ID = "game_score"
-const val MAINACTIVITY_CODE = 123;
-
 @SuppressLint("SetTextI18n")
 class MainActivity : AppCompatActivity() {
     private var blurHelper: BlurHelper? = null
     private lateinit var binding: ActivityMainBinding
+
+    private var firstFragmentsCount = 0;
+    private var secondFragmentsCount = 0;
 
 
     override fun attachBaseContext(newBase: Context) {
@@ -64,9 +64,12 @@ class MainActivity : AppCompatActivity() {
             val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, FirstFragment::class.java, bundle)
+                .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle,
+                    "firstFragment$firstFragmentsCount"
+                )
                 .addToBackStack(fragmentID)
                 .commit()
+
 
         }
 
@@ -78,9 +81,12 @@ class MainActivity : AppCompatActivity() {
             val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle)
+                .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle,
+                    "firstFragment$firstFragmentsCount"
+                )
                 .addToBackStack(fragmentID)
                 .commit()
+
 
         }
 
@@ -92,14 +98,18 @@ class MainActivity : AppCompatActivity() {
             val fragmentID = Random.nextInt(0,1000).toString()
             supportFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
-                .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle)
+                .replace(R.id.fragment_container_view, FirstFragment::class.java, bundle,
+                    "secondFragment$secondFragmentsCount"
+                )
                 .addToBackStack(fragmentID)
                 .commit()
+
 
         }
 
 
     }
+
 
     // OnResume is called when the app recieve focus, Do all UI related work here
     override fun onResume() {
