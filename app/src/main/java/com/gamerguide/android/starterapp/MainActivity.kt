@@ -107,6 +107,17 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //Remove the topmost fragment from backstack when pop is clicked
+        binding.pop.setOnClickListener {
+            supportFragmentManager.popBackStack()
+        }
+
+        //Remove all the fragment from backstack when clear is clicked
+        binding.clear.setOnClickListener {
+            for (i in 0 until supportFragmentManager.backStackEntryCount) {
+                supportFragmentManager.popBackStack()
+            }
+        }
 
     }
 

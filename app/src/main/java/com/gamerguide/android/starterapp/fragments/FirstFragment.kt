@@ -33,7 +33,7 @@ class FirstFragment:Fragment(R.layout.fragment_first){
         super.onViewCreated(view, savedInstanceState)
         val name = requireArguments().getString("name")
         val count = requireArguments().getInt("count")
-        binding.data.text = "$name";
+        binding.data.text = "$name Added..";
         binding.count.text = "$count";
     }
 }
