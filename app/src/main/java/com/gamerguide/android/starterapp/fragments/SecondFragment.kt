@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import com.gamerguide.android.starterapp.R
 import com.gamerguide.android.starterapp.databinding.FragmentSecondBinding
 
@@ -25,6 +26,13 @@ class SecondFragment:Fragment(R.layout.fragment_second){
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_left)
+        exitTransition = inflater.inflateTransition(R.transition.slide_right)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
