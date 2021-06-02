@@ -12,4 +12,4 @@ This is a simple android implementing Fragments and maintaining its life cycle m
 
 # Screenshots
 
-![Screenshot](screens/screen1.jpg)
+![Screenshot](screens/screen.jpg)
